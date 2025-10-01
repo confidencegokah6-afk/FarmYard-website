@@ -1,0 +1,131 @@
+:root{
+  --bg:#d7dde4;
+  --card:#ffffff;
+  --accent:#2b7a50;
+  --muted:#6c757d;
+  --text:#0d1b2a;
+  --max-width:1000px;
+  --radius:10px;
+  --gap:1rem;
+  --container-padding:1rem;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color-scheme: light;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg, var(--bg), #eef3f6);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:1.25rem 0;
+}
+
+.container{
+  width:calc(100% - 2rem);
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:var(--container-padding);
+}
+
+.site-header{
+  background:transparent;
+  margin-bottom:1rem;
+}
+.site-header .container{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
+.logo{
+  text-decoration:none;
+  font-weight:700;
+  color:var(--accent);
+  font-size:1.25rem;
+}
+.nav-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  gap:0.5rem;
+  margin-left:auto;
+  flex-wrap:wrap;
+}
+.nav-list a{
+  text-decoration:none;
+  padding:0.45rem 0.6rem;
+  border-radius:6px;
+  color:var(--text);
+  font-size:0.95rem;
+}
+.nav-list a:hover{background:rgba(0,0,0,0.045)}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:0 8px 30px rgba(11, 27, 38, 0.06);
+  padding:1.25rem;
+}
+
+.lede{
+  color:var(--muted);
+  margin-top:0;
+}
+
+.toc{
+  background:linear-gradient(180deg, #fcfeff, #f8fbfb);
+  border:1px solid rgba(11,27,38,0.04);
+  padding:0.8rem;
+  border-radius:8px;
+  max-width:320px;
+  margin:0.75rem 0;
+  font-size:0.95rem;
+}
+.toc ol{margin:0.5rem 0 0 1rem;padding:0}
+
+h1,h2,h3{color:var(--text); margin-top:1rem}
+h1{font-size:1.5rem}
+h2{font-size:1.125rem;border-bottom:1px dashed rgba(0,0,0,0.06);padding-bottom:0.45rem}
+h3{font-size:1rem;margin-top:0.75rem}
+
+ul,ol{margin-left:1.1rem}
+.muted{color:var(--muted)}
+.small{font-size:0.85rem;color:var(--muted);margin-top:0.5rem}
+
+.card-footer{
+  margin-top:1.25rem;
+  border-top:1px solid rgba(11,27,38,0.04);
+  padding-top:0.8rem;
+}
+
+.back-to-top{
+  text-decoration:none;
+  font-size:0.9rem;
+  color:var(--accent);
+}
+
+/* Responsive layout: make TOC float on wide screens */
+@media(min-width:900px){
+  .card{
+    display:grid;
+    grid-template-columns: 1fr 320px;
+    gap:1rem;
+    align-items:start;
+  }
+  .card > section, .card > footer, .card > article, .card > .toc{
+    /* keep standard order; sections will span the main column */
+  }
+  /* Make content flow in the left column */
+  .card > .toc{grid-column:2}
+  .card > section, .card > footer{grid-column:1}
+}
+
+/* Accessibility: focus styles */
+a:focus, button:focus, input:focus{
+  outline:3px solid color-mix(in srgb, var(--accent) 40%, white);
+  outline-offset:2px;
+}
